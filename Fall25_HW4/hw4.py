@@ -13,8 +13,9 @@ def conditional_map(predicate, if_func, else_func, L):
     :param L: list of elements
     :return R: list of results
     '''
-    # Fill in
-    pass
+
+    return [if_func(x) if predicate(x) else else_func(x) for x in L]
+
 
 def compose_map(func_1, func_2, L):
     """
@@ -25,8 +26,8 @@ def compose_map(func_1, func_2, L):
     :param L: list
     :return R: list
     """
-    # Fill in
-    pass
+
+    return[func_2(func_1(x)) for x in L]
 
 def compose(func_1, func_2):
     # Fill in
@@ -38,9 +39,7 @@ def compose(func_1, func_2):
     :return ret_fun: function
     """
     def ret_fun(i):
-        # Fill in
-        pass
-
+        return func_2(func_1(i))
     return ret_fun
 
 def repeater(fun, num_repeats):
@@ -56,9 +55,11 @@ def repeater(fun, num_repeats):
     :return ret_fun: function
     """
     def ret_fun(x):
-        # Fill in
-        pass
-
+        result = x
+        for i in range(len(fun)):
+            for j in range(num_repeats[i]):
+                result = fun[i](result)
+        return result
     return ret_fun
 
 #############################################
