@@ -39,7 +39,7 @@ def compose(func_1, func_2):
     :return ret_fun: function
     """
     def ret_fun(i):
-        return func_2(func_1(i))
+        return func_1(func_2(i))
     return ret_fun
 
 def repeater(fun, num_repeats):
@@ -55,7 +55,7 @@ def repeater(fun, num_repeats):
     :return ret_fun: function
     """
     def ret_fun(x):
-        result = x
+        result = x # define the result the input x
         for i in range(len(fun)):
             for j in range(num_repeats[i]):
                 result = fun[i](result)
@@ -78,7 +78,7 @@ def stencil(data, f, width):
     :param width: int
     :return output: list
     """
-    filtered_list = []
+    filtered_list = [] #define the filtered list
     for i in range(len(data) - width + 1):
         window = data[i:i+width]
         filtered_list.append(f(window))
@@ -109,7 +109,7 @@ def create_box(box):
     """
 
     def box_filter(L):
-        result = 0
+        result = 0 #intialize result
         width = len(box)
         for i in range(width):
             result += box[width-1-i] * L[i]
