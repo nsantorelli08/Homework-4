@@ -78,8 +78,12 @@ def stencil(data, f, width):
     :param width: int
     :return output: list
     """
-    # Fill in
-    pass
+    filtered_list = []
+    for i in range(len(data) - width + 1):
+        window = data[i:i+width]
+        filtered_list.append(f(window))
+
+    return filtered_list
 
 
 def create_box(box):
@@ -103,12 +107,16 @@ def create_box(box):
     :param box: list
     :return box_filter: function, len(box): int
     """
-    # Fill in
+
     def box_filter(L):
-        # Fill in
-        pass
+        result = 0
+        width = len(box)
+        for i in range(width):
+            result += box[width-1-i] * L[i]
+        return result
 
     return box_filter, len(box)
+
 
 if __name__ == '__main__':
     # To test your functions, run: python given_tests.py
